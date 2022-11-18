@@ -16,7 +16,7 @@ while n:
 
 WINDOW = pygame.display.set_mode((900, 600))
 pygame.display.set_caption('Bouncing ball simulation with coefficient of restitution')
-FPS = 30
+FPS = 60
 BALL_OBJ = pygame.image.load(os.path.join('assets', 'soccerball.png'))
 font = pygame.font.Font(os.path.join('fonts', 'font.ttf'), 24)
 text_color = (255, 255, 255)
