@@ -20,7 +20,7 @@ text_color = (255, 255, 255)
 OX = 450
 OY = 50
 ORIGIN = (OX, OY)
-G = 9.8 
+G = 9.8 * 100
 
 def draw_window(rad, vel, accel):
     WINDOW.fill((0, 0, 0))
@@ -29,9 +29,9 @@ def draw_window(rad, vel, accel):
     pygame.draw.line(WINDOW, (255, 255, 255), (OX, OY), ((OX - dX), (OY + dY)))
     pygame.draw.line(WINDOW, (255, 255, 255), (200, OY), (700, OY))
     pygame.draw.line(WINDOW, (255, 0, 0), (OX, OY), (OX, 500))
-    velocity = font.render(f'Velocity: {vel} px / s', True, text_color)
-    angle = font.render(f'Angle: {(rad/math.pi) * 180} degrees', True, text_color)
-    acceleration = font.render(f'Tangential acceleration: {accel} px / s^2', True, text_color)
+    velocity = font.render(f'Velocity: {int(vel)} px / s', True, text_color)
+    angle = font.render(f'Angle: {int((rad/math.pi) * 180)} degrees', True, text_color)
+    acceleration = font.render(f'Tangential acceleration: {int(accel)} px / s^2', True, text_color)
     WINDOW.blit(velocity, (100, 300))
     WINDOW.blit(angle, (100, 400))
     WINDOW.blit(acceleration, (100, 500))
