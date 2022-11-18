@@ -1,5 +1,4 @@
 import pygame
-import math
 from pygame.locals import *
 import os
 
@@ -12,6 +11,8 @@ while n:
         co_res *= -1
         n = False
         print('Coefficient of restitution is set! Check the new window that opened to view the simulation!')
+    else:
+        print("Invalid value of coefficient of restitution. Please enter again.")
 
 WINDOW = pygame.display.set_mode((900, 600))
 pygame.display.set_caption('Bouncing ball simulation with coefficient of restitution')
@@ -40,7 +41,7 @@ def main(co_res):
     clock = pygame.time.Clock()
     started = False
     run = True
-    hMax = 0
+    hMax = 100
     ball_rect = pygame.Rect(450, 100, 24, 24)
    
     draw_window(ball_rect, hMax, font, text_color, co_res)
