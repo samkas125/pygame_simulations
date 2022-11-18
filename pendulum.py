@@ -13,14 +13,14 @@ pygame.init()
 
 WINDOW = pygame.display.set_mode((900, 600))
 pygame.display.set_caption('Pendulum simulation')
-FPS = 60
+FPS = 2000
 BOB_OBJ = pygame.image.load(os.path.join('assets', 'soccerball.png'))
 font = pygame.font.Font(os.path.join('fonts', 'font.ttf'), 24)
 text_color = (255, 255, 255)
 OX = 450
 OY = 50
 ORIGIN = (OX, OY)
-G = 9.8 * 100
+G = 9.8 * 1000
 
 def draw_window(rad, vel, accel):
     WINDOW.fill((0, 0, 0))
