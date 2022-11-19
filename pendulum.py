@@ -79,6 +79,7 @@ def main():
     clock = pygame.time.Clock()
     started = False
     run = True
+    time_f = 0
     draw_window(radian, vel, accel)
     while run:
         clock.tick(FPS)
@@ -88,6 +89,7 @@ def main():
         keys_pressed = pygame.key.get_pressed()
         if keys_pressed[K_SPACE]:
             started = True
+            time_init = pygame.time.get_ticks()
 
         if started:
             radvel = newRad(radian, vel)
@@ -95,6 +97,12 @@ def main():
             vel = radvel[1]
             accel = radvel[2]
             draw_window(radian, vel, accel)
+
+        if started and vel < 1.2 and vel > -1.2 and radian > 0: # checking that the velocity is approximately zero, and that the ball is at the left side peak
+            time_f = pygame.time.get_ticks()
+            time_period = time_f - time_init
+            time_init = time_f
+            print(time_period)
 
         for event in pygame.event.get(): 
             if event.type == pygame.QUIT:
