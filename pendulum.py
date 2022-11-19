@@ -47,6 +47,8 @@ def draw_window(rad, vel, accel):
     velocity = font.render(f'Velocity: {int(vel)} px / s', True, text_color)
     angle = font.render(f'Angle: {int((rad/math.pi) * 180)} degrees', True, text_color)
     acceleration = font.render(f'Tangential acceleration: {int(accel)} px / s^2', True, text_color)
+    timeP_form = font.render(f'Time period: {(2 * math.pi) * math.sqrt(length/G)}', True, text_color)
+    WINDOW.blit(timeP_form, (100, 200))
     WINDOW.blit(velocity, (100, 300))
     WINDOW.blit(angle, (100, 400))
     WINDOW.blit(acceleration, (100, 500))
