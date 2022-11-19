@@ -4,8 +4,8 @@ from pygame.locals import *
 import os
 
 
-# theta = 70
-# length = 400
+theta = 70
+length = 400.0
 n = 0
 while n < 2:
     theta = float(input('Enter the initial angle of displacement of the pendulum (90 to 0) : '))
@@ -14,7 +14,7 @@ while n < 2:
     else:
         print("Invalid value for angle of displacement. Please enter again")
         continue
-    length = int(input("Enter the length of the pendulum in pixels (10 to 500): "))
+    length = float(input("Enter the length of the pendulum in pixels (10 to 500): "))
     if length <= 500 and length >= 10:
         n += 1
     else:
@@ -28,14 +28,15 @@ pygame.init()
 
 WINDOW = pygame.display.set_mode((900, 600))
 pygame.display.set_caption('Pendulum simulation')
-FPS = 200
+FPS = 30
 BOB_OBJ = pygame.image.load(os.path.join('assets', 'soccerball.png'))
 font = pygame.font.Font(os.path.join('fonts', 'font.ttf'), 24)
 text_color = (255, 255, 255)
 OX = 450
 OY = 50
 ORIGIN = (OX, OY)
-G = 9.8 * 100
+G = 500.1
+PI = math.pi
 
 def draw_window(rad, vel, accel):
     WINDOW.fill((0, 0, 0))
@@ -47,7 +48,7 @@ def draw_window(rad, vel, accel):
     velocity = font.render(f'Velocity: {int(vel)} px / s', True, text_color)
     angle = font.render(f'Angle: {int((rad/math.pi) * 180)} degrees', True, text_color)
     acceleration = font.render(f'Tangential acceleration: {int(accel)} px / s^2', True, text_color)
-    timeP_form = font.render(f'Time period: {(2 * math.pi) * math.sqrt(length/G)}', True, text_color)
+    timeP_form = font.render(f'Time period: {(2 * math.pi) * math.sqrt(float(length)/float(G))}', True, text_color)
     WINDOW.blit(timeP_form, (100, 200))
     WINDOW.blit(velocity, (100, 300))
     WINDOW.blit(angle, (100, 400))
@@ -75,7 +76,7 @@ def main():
 
     radian = (theta/180) * math.pi
     vel = 0
-    accel = 0
+    accel = G * math.sin(radian)
     clock = pygame.time.Clock()
     started = False
     run = True
