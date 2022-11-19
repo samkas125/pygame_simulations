@@ -3,24 +3,39 @@ import math
 from pygame.locals import *
 import os
 
-theta = 70
-length = 400
 
+# theta = 70
+# length = 400
+n = 0
+while n < 2:
+    theta = float(input('Enter the initial angle of displacement of the pendulum (90 to 0) : '))
+    if theta <= 90 and theta >= 0:
+        n += 1
+    else:
+        print("Invalid value for angle of displacement. Please enter again")
+        continue
+    length = int(input("Enter the length of the pendulum in pixels (10 to 500): "))
+    if length <= 500 and length >= 10:
+        n += 1
+    else:
+        print("Invalid value for length of pendulum. Please enter again")
+        continue
 
+print("Please check the opened pygame window to view the simulation. Press 'space' to start it.")
 
 
 pygame.init()
 
 WINDOW = pygame.display.set_mode((900, 600))
 pygame.display.set_caption('Pendulum simulation')
-FPS = 2000
+FPS = 200
 BOB_OBJ = pygame.image.load(os.path.join('assets', 'soccerball.png'))
 font = pygame.font.Font(os.path.join('fonts', 'font.ttf'), 24)
 text_color = (255, 255, 255)
 OX = 450
 OY = 50
 ORIGIN = (OX, OY)
-G = 9.8 * 1000
+G = 9.8 * 100
 
 def draw_window(rad, vel, accel):
     WINDOW.fill((0, 0, 0))
