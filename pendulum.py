@@ -48,7 +48,7 @@ def draw_window(rad, vel, accel):
     velocity = font.render(f'Velocity: {int(vel)} px / s', True, text_color)
     angle = font.render(f'Angle: {int((rad/math.pi) * 180)} degrees', True, text_color)
     acceleration = font.render(f'Tangential acceleration: {int(accel)} px / s^2', True, text_color)
-    timeP_form = font.render(f'Time period: {(2 * math.pi) * math.sqrt(float(length)/float(G))}', True, text_color)
+    timeP_form = font.render(f'Time period: {round((2 * math.pi) * math.sqrt(float(length)/float(G)), 2)} s', True, text_color)
     WINDOW.blit(timeP_form, (100, 200))
     WINDOW.blit(velocity, (100, 300))
     WINDOW.blit(angle, (100, 400))
@@ -99,15 +99,16 @@ def main():
             accel = radvel[2]
             draw_window(radian, vel, accel)
 
-        if started and vel < 1.2 and vel > -1.2 and radian > 0: # checking that the velocity is approximately zero, and that the ball is at the left side peak
-            time_f = pygame.time.get_ticks()
-            time_period = time_f - time_init
-            time_init = time_f
-            print(time_period)
+        # if started and vel < 5 and vel > -5 and radian > 0: # checking that the velocity is approximately zero, and that the ball is at the left side peak
+        #     time_f = pygame.time.get_ticks()
+        #     time_period = time_f - time_init
+        #     time_init = time_f
+        #     print(time_period)
 
         for event in pygame.event.get(): 
             if event.type == pygame.QUIT:
                 run = False
+                print('Simulation closed!')
 
 main()
 pygame.quit()
