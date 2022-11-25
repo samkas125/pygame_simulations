@@ -3,7 +3,7 @@ import math
 from pygame.locals import *
 import os
 
-
+#INPUTTING VALUES OF ANGLE AND LENGTH
 theta = 70
 length = 400.0
 n = 0
@@ -23,7 +23,7 @@ while n < 2:
 
 print("Please check the opened pygame window to view the simulation. Press 'space' to start it.")
 
-
+#INITIALIZATION OF PYGAME OBJECTS
 pygame.init()
 
 WINDOW = pygame.display.set_mode((900, 600))
@@ -38,6 +38,7 @@ ORIGIN = (OX, OY)
 G = 500.1
 PI = math.pi
 
+#DRAWS THE SIMULATION ON THE WINDOW
 def draw_window(rad, vel, accel):
     WINDOW.fill((0, 0, 0))
     dX = (length * math.sin(rad))
@@ -57,10 +58,10 @@ def draw_window(rad, vel, accel):
 
     WINDOW.blit(BOB_OBJ, (OX - dX - 12, OY + dY - 12))
     pygame.display.update()
-
+#CALCULATES NEW ANGLE BASED ON CURRENT ANGLE AND VELOCITY USING 4 FORMULAE
 def newRad(rad, u):
     # using v = u + at
-    a = G * math.sin(rad)
+    a = G * math.sin(rad) # USING THE DERIVED FORMULA A = G*SIN(THETA) FOR PENDULUM
     t = 1/FPS
     v = u + a * t
 
@@ -69,19 +70,21 @@ def newRad(rad, u):
     # Using arclen = radian * radius
     dRad = arcLen / length
     newRad = rad - dRad
-    return [newRad, v, a]
+    return [newRad, v, a] # RETURNS THE NEW ANGLE, VELOCITY AND ACCELERATION
 
 
 def main():
 
+    #INITIALIZATION OF ANGLE, VELOCITY AND ACCELERATION
     radian = (theta/180) * math.pi
     vel = 0
     accel = G * math.sin(radian)
     clock = pygame.time.Clock()
     started = False
     run = True
-    time_f = 0
+    # time_f = 0
     draw_window(radian, vel, accel)
+    
     while run:
         clock.tick(FPS)
         draw_window(radian, vel, accel)
@@ -90,7 +93,7 @@ def main():
         keys_pressed = pygame.key.get_pressed()
         if keys_pressed[K_SPACE]:
             started = True
-            time_init = pygame.time.get_ticks()
+            # time_init = pygame.time.get_ticks()
 
         if started:
             radvel = newRad(radian, vel)
