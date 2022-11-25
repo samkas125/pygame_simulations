@@ -81,7 +81,5 @@ def main(co_res):
 main(co_res)
 
 pygame.quit()
-
-#test
     
     
