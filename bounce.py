@@ -62,7 +62,7 @@ def main(co_res):
         if y_change < 0.15 and y_change >= -0.15 and started:
             print(f'Max height of bounce: {500 - ball_rect.y} px')
             hMax = ball_rect.y
-            if (500-hMax) <= 10:
+            if (500-hMax) <= 20:
                 started = False
                 ball_rect.y = 500
                 draw_window(ball_rect, hMax, font, text_color, co_res)
