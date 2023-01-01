@@ -28,7 +28,8 @@ pygame.display.set_caption('Simulating the speed of fluid in a pipe')
 FPS = 60
 DROPLET = pygame.image.load(os.path.join('assets', 'drop.png'))
 FONT = pygame.font.Font(os.path.join('fonts', 'font.ttf'), 24)
-COLOR = (255, 255, 255)
+WHITE = (255, 255, 255)
+BLUE = (0, 100, 100)
 VEL = round((((pressure_diff * radius ** 2) / (8 * viscosity * length) ) / 60), 2)
 # Use formula to calculate velocity of the ball in pixels / (1/60)th of a second
 # Q = ΔPπr4 / 8ηl
@@ -38,11 +39,11 @@ def draw_window(x_pos):
     pos = (x_pos + 100, 288 + 250)
     WINDOW.fill((0, 0, 0))
     #text
-    rad = FONT.render(f'Radius of pipe = {radius} px', True, COLOR)
-    vis = FONT.render(f'Viscosity of fluid = {viscosity} Pa*s', True, COLOR)
-    leng = FONT.render(f'Length of pipe (preset) = {length} px', True, COLOR)
-    pre = FONT.render(f'Pressure difference across 2 ends of the pipe (preset) = {pressure_diff} Pa', True, COLOR)
-    vel = FONT.render(f'Velocity of fluid = {round(VEL * 60, 2)} px/s', True, COLOR)
+    rad = FONT.render(f'Radius of pipe = {radius} px', True, WHITE)
+    vis = FONT.render(f'Viscosity of fluid = {viscosity} Pa*s', True, WHITE)
+    leng = FONT.render(f'Length of pipe (preset) = {length} px', True, BLUE)
+    pre = FONT.render(f'Pressure difference across 2 ends of the pipe (preset) = {pressure_diff} Pa', True, BLUE)
+    vel = FONT.render(f'Velocity of fluid = {round(VEL * 60, 2)} px/s', True, WHITE)
     WINDOW.blit(rad, (70, 50))
     WINDOW.blit(vis, (70, 150))
     WINDOW.blit(leng, (70, 250))
