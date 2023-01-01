@@ -36,7 +36,6 @@ def draw_window(rect, hMax, font, text_color, co_res):
         WINDOW.blit(coRest, (100, 200))
         pygame.display.update()
 
-
 #MAIN FUNCTION THAT RUNS THE SIMULATION
 def main(co_res):
     clock = pygame.time.Clock()
@@ -59,7 +58,7 @@ def main(co_res):
             y_change += 0.3 #INCREASING VELOCITY OF THE BALL - ACCELERATION
             ball_rect.y += y_change
             draw_window(ball_rect, hMax, font, text_color, co_res)
-        
+     
         if y_change < 0.15 and y_change >= -0.15 and started: # CHECKS IF BALL IS AT MAX HEIGHT
             print(f'Max height of bounce: {500 - ball_rect.y} px')
             hMax = ball_rect.y
@@ -83,4 +82,4 @@ main(co_res)
 
 pygame.quit()
     
-    
+ 
