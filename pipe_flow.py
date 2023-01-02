@@ -32,7 +32,7 @@ WHITE = (255, 255, 255)
 BLUE = (0, 100, 100)
 VEL = round((((pressure_diff * radius ** 2) / (8 * viscosity * length) ) / 60), 2)
 # Use formula to calculate velocity of the ball in pixels / (1/60)th of a second
-# Q = ΔPπr4 / 8ηl
+# Q = ΔPπr^4 / 8ηl
 print(VEL)
 
 def draw_window(x_pos):
