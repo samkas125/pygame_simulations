@@ -9,7 +9,7 @@ length = 400.0
 n = 0
 while n < 2:
     theta = float(input('Enter the initial angle of displacement of the pendulum (90 to 0) : '))
-    if theta <= 90 and theta >= 0:
+    if theta <= 180 and theta >= 0:
         n += 1
     else:
         print("Invalid value for angle of displacement. Please enter again")
