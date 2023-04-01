@@ -4,7 +4,7 @@ from pygame.locals import *
 import os
 import time
 
-# Input time period and amplitude
+# Input mass and amplitude
 n = 0
 while n < 2:
     m = float(input('Enter the mass of oscillating object of the mass-spring system (in kg - use values from 1 to 10 for best results): '))
@@ -46,7 +46,7 @@ def velocity(time):
 def acceleration(time):
     return -1 * amplitude * omega * omega * math.cos(omega * time)
 
-#DRAWS THE SIMULATION ON THE WINDOW
+#DRAWS THE SIMULATION ON THE WINDOW - called every tick
 def draw_window(time):
     WINDOW.fill((0, 0, 0))
     curr_displacement = displacement(time)
@@ -59,6 +59,7 @@ def draw_window(time):
     WINDOW.blit(vel_text, (100, 100))
     WINDOW.blit(disp_text, (100, 50))
     pygame.display.update()
+
 def main():
     clock = pygame.time.Clock()
     started = False
@@ -66,19 +67,19 @@ def main():
     curr_time = 0
     draw_window(curr_time)
     
-    while run:
+    while run: # Continuous loop for smooth animation
         clock.tick(FPS)
         if not started: draw_window(curr_time)
-        keys_pressed = pygame.key.get_pressed()
+        keys_pressed = pygame.key.get_pressed() # Checking when spacebar is pressed
         if keys_pressed[K_SPACE] and not started:
             started = True
-            curr_time = time.time()
+            curr_time = time.time() # Getting the time when the spacebar is pressed
 
         if started:
-            time_diff = time.time() - curr_time
+            time_diff = time.time() - curr_time # time_diff is the time in seconds passed from when the spacebar was pressed
             draw_window(time_diff)
 
-        for event in pygame.event.get(): 
+        for event in pygame.event.get(): # When window is closed
             if event.type == pygame.QUIT:
                 run = False
                 print('Simulation closed!')
