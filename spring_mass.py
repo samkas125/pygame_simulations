@@ -7,11 +7,11 @@ import time
 # Input time period and amplitude
 n = 0
 while n < 2:
-    T = float(input('Enter the time period of the mass-spring system (in seconds): '))
-    if T > 0:
+    m = float(input('Enter the mass of oscillating object of the mass-spring system (in kg - use values from 1 to 10 for best results): '))
+    if m > 0:
         n += 1
     else:
-        print("Invalid value for time period. Please enter again")
+        print("Invalid value for mass. Please enter again")
         n = 0
         continue
     amplitude = float(input("Enter the amplitude of the mass-spring system in pixels (0 to 450): "))
@@ -22,9 +22,9 @@ while n < 2:
         n = 0
         continue
 print("Please check the opened pygame window to view the simulation. Press 'space' to start it.")
+T = 2 * math.pi * math.sqrt(m / 10)
 #INITIALIZATION OF PYGAME OBJECTS
 pygame.init()
-
 WINDOW = pygame.display.set_mode((900, 600))
 pygame.display.set_caption('Pendulum simulation')
 FPS = 30
@@ -68,7 +68,7 @@ def main():
     
     while run:
         clock.tick(FPS)
-        draw_window(curr_time)
+        if not started: draw_window(curr_time)
         keys_pressed = pygame.key.get_pressed()
         if keys_pressed[K_SPACE] and not started:
             started = True
