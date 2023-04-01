@@ -1,5 +1,5 @@
 from pygame.locals import *
-import math, os, pygame
+import os, pygame
 
 pygame.init()
 
@@ -32,8 +32,7 @@ WHITE = (255, 255, 255)
 BLUE = (0, 100, 100)
 VEL = round((((pressure_diff * radius ** 2) / (8 * viscosity * length) ) / 60), 2)
 # Use formula to calculate velocity of the ball in pixels / (1/60)th of a second
-# Q = ΔPr^2 / 8ηl
-print(VEL)
+# Q (Rate of flow) = ΔPπr^4 / 8ηl. Since velocity = rate of flow / crossectional area, the original expression is divided by πr^2, leading to the formula used above
 
 def draw_window(x_pos):
     pos = (x_pos + 100, 288 + 250)
@@ -79,5 +78,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
