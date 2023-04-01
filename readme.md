@@ -14,3 +14,14 @@ Takes the radius of the pipe and viscosity of fluid as inputs. It uses constant 
 (Where 'P' is the pressure difference, 'r' is the radius, 'η' is the viscosity, and 'l' is the length)
 
 Finally, it plays a simulation, where a droplet is seen moving through a pipe at the calculated velocity.
+
+## Spring - mass system
+The spring-mass system is a form of simple harmonic motion, where a mass is attached to a spring. It is allowed to oscillate back and forth. For this simulation, the theoretical equations for displacement, velocity and acceleration are used:
+
+x(t) = A * cos(ωt)
+
+v(t) = -A * ω * sin(ωt)
+
+a(t) = -A * ω * ω * cos(ωt)
+
+The formula T = 2π √(m/k) is used to calculate the time period from mass. The spring constant, k is assumed constant. Mass and amplitude are taken from the user.
