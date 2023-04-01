@@ -13,12 +13,14 @@ while n < 2:
         n += 1
     else:
         print("Invalid value for angle of displacement. Please enter again")
+        n = 0
         continue
     length = float(input("Enter the length of the pendulum in pixels (10 to 500): "))
     if length <= 500 and length >= 10:
         n += 1
     else:
         print("Invalid value for length of pendulum. Please enter again")
+        n = 0
         continue
 
 print("Please check the opened pygame window to view the simulation. Press 'space' to start it.")
@@ -45,7 +47,7 @@ def draw_window(rad, vel, accel):
     dY = (length * math.cos(rad))
     pygame.draw.line(WINDOW, (255, 255, 255), (OX, OY), ((OX - dX), (OY + dY)))
     pygame.draw.line(WINDOW, (255, 255, 255), (200, OY), (700, OY))
-    pygame.draw.line(WINDOW, (255, 0, 0), (OX, OY), (OX, 500))
+    pygame.draw.line(WINDOW, (255, 0, 0), (OX, OY), (OX, OY + length))
     velocity = font.render(f'Velocity: {int(vel)} px / s', True, text_color)
     angle = font.render(f'Angle: {int((rad/math.pi) * 180)} degrees', True, text_color)
     acceleration = font.render(f'Tangential acceleration: {int(accel)} px / s^2', True, text_color)
