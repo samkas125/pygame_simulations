@@ -25,3 +25,6 @@ v(t) = -A * ω * sin(ωt)
 a(t) = -A * ω * ω * cos(ωt)
 
 The formula T = 2π √(m/k) is used to calculate the time period from mass. The spring constant, k is assumed constant. Mass and amplitude are taken from the user.
+
+## Analog Clock
+Takes the starting time in the form 'hh:mm:ss', and simulates a smooth analog clock.
